@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo listing contents of /root
+ls -la /root/
+echo hello world

@@ -1,0 +1,21 @@
+# vi: ft=dockerfile
+
+FROM centos:7
+
+WORKDIR /root
+
+COPY example example
+
+# Install FPM.
+RUN yum -y install ruby libffi-devel ruby-devel gcc make rpmdevtools && rm -rf /var/cache/yum/* 
+
+RUN gem install fpm
+
+RUN fpm -s dir -t rpm -n hello-world -v 0.0.1 example/hello-world=/usr/bin/hello-world
+
+RUN rpm -i hello-world.rpm 
+
+# Define working directory.
+
+# Define default command.
+CMD ["/usr/bin/hello-world"]

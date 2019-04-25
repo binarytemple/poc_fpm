@@ -5,6 +5,7 @@ Trivial proof of concept - using [fpm](https://github.com/jordansissel/fpm) to b
 
 Examples include : 
 
+| distro | version|
 |--------|--------|
 | alpine | latest |
 | ubuntu | bionic |

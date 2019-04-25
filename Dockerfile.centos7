@@ -6,7 +6,6 @@ WORKDIR /root
 
 COPY example example
 
-# Install FPM.
 RUN yum -y install \
             gcc \
             libffi-devel \
@@ -22,7 +21,4 @@ RUN fpm -s dir -t rpm -n hello-world -v 0.0.1 example/hello-world=/usr/bin/hello
 
 RUN rpm -i hello-world*.rpm
 
-# Define working directory.
-
-# Define default command.
 CMD ["/usr/bin/hello-world"]

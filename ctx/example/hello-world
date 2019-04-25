@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo listing contents of /root
 ls -la /root/

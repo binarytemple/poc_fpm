@@ -1,0 +1,25 @@
+# vi: ft=dockerfile
+
+FROM alpine
+
+WORKDIR /root
+
+COPY example example
+
+RUN apk add --no-cache \
+        ruby \
+        ruby-etc \
+        ruby-dev \
+        gcc \
+        libffi-dev \
+        make \
+        libc-dev \
+        rpm \
+        tar \
+      && gem install --no-ri --no-rdoc fpm
+
+RUN fpm -s dir -t apk -n hello-world -v 0.0.1 example/hello-world=/usr/bin/hello-world
+
+RUN apk add --allow-untrusted hello-world*.apk  
+
+CMD ["/usr/bin/hello-world"]

@@ -1,5 +1,9 @@
 
-all: centos6 centos7 ubuntu-bionic
+all: centos6 centos7 ubuntu-bionic alpine
+
+alpine:
+	docker build -f Dockerfile.alpine -t bryanhuntesl/fpm-alpine-poc ctx
+	docker run bryanhuntesl/fpm-alpine-poc
 
 centos6:
 	docker build -f Dockerfile.centos6 -t bryanhuntesl/fpm-rpm-poc:centos6 ctx

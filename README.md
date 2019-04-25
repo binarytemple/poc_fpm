@@ -14,5 +14,3 @@ Examples include :
 | ubuntu | xenial |
 | centos | 6      |
 | centos | 7      |
-|--------|--------|
-

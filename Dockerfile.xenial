@@ -1,0 +1,17 @@
+# vi: ft=dockerfile
+
+FROM ubuntu:xenial
+
+WORKDIR /root
+
+COPY example example
+
+RUN apt-get -y update && apt-get -y install ruby gcc make libffi-dev ruby-dev && apt-get -y clean 
+
+RUN gem install fpm
+
+RUN fpm -s dir -t deb -n hello-world -v 0.0.1 example/hello-world=/usr/bin/hello-world
+
+RUN dpkg -i hello-world*.deb
+
+CMD ["/usr/bin/hello-world"]
